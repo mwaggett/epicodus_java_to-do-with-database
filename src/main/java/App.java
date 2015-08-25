@@ -12,7 +12,6 @@ public class App {
   get("/", (request, response) -> {
     HashMap<String, Object> model = new HashMap<String, Object>();
     model.put("categories", Category.all());
-
     model.put("template", "templates/index.vtl");
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
@@ -44,6 +43,19 @@ public class App {
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
 
+  //delete method:the order matters,save the.all AFTER you do your updating or deleting
+
+   post("/categories/:id/delete", (request, response) -> {
+  //need to put :id in the url so that we can grab it below
+    HashMap<String, Object> model = new HashMap<String, Object>();
+
+  //this is the same as ****
+    Category category = Category.find(Integer.parseInt(request.params(":id")));
+    model.put("template", "templates/index.vtl");
+    category.delete();
+    model.put("categories", Category.all());
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
 
   post("/tasks", (request, response) -> {
     HashMap<String,Object> model = new HashMap<String, Object>();
