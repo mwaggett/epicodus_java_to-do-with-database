@@ -1,0 +1,15 @@
+<p>
+  Add a task:
+</p>
+<form action="/categories/newCategory.getId()" method="post">
+  <label for="description">Task name</label>
+  <input id="description" name="description" type="text">
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+#foreach ($task in $tasks)
+ <h3><a href="/categories/$task.getId()">$task.getName()</a></h3>
+#end
+
+
+<a href="/">Go back</a><br>
