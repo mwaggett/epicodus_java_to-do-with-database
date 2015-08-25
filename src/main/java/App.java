@@ -68,9 +68,9 @@ public class App {
 
     Task newTask = new Task(description, category.getId());
     newTask.save();
-
     model.put("category",category);
-    model.put("template", "templates/category.vtl");
+    model.put("categories", Category.all());
+    model.put("template", "templates/index.vtl");
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
 
