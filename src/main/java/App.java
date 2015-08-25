@@ -74,6 +74,26 @@ public class App {
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
 
+  get("categories/:id/update", (request, response) -> {
+    HashMap<String, Object> model = new HashMap<String, Object>();
+    Category category = Category.find(Integer.parseInt(request.params(":id")));
 
-  }
-}
+    model.put("category", category);
+    model.put("template", "templates/update-form.vtl");
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
+
+  post("categories/:id/update", (request, response) -> {
+    HashMap<String, Object> model = new HashMap<String, Object>();
+    Category category = Category.find(Integer.parseInt(request.params(":id")));
+    String name = request.queryParams("name");
+    category.update(name);
+
+    response.redirect("/");
+    return null;
+  });
+
+
+}//end of main
+
+}//end of app

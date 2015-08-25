@@ -31,9 +31,9 @@ public class AppTest extends FluentTest{
   @Test
   public void categoryIsDisplayedWhenCreated() {
     goTo("http://localhost:4567/");
-    fill("#name").with("Banking");
-    submit(".btn");
-    assertThat(pageSource()).contains("Banking");
+    fill("#name").with("Morping");
+    submit(".submit-name");
+    assertThat(pageSource()).contains("Morping");
   }
 
   @Test

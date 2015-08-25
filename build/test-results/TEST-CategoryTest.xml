@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CategoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2015-08-25T19:06:43" hostname="epicodus-107.local" time="0.069">
+<testsuite name="CategoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2015-08-25T23:16:54" hostname="epicodus-107.local" time="0.068">
   <properties/>
   <testcase name="getTasks_retrievesAllTasksFromDatabase_tasksList" classname="CategoryTest" time="0.028"/>
-  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.008"/>
-  <testcase name="equals_returnsTrueIfNamesAreTheSame" classname="CategoryTest" time="0.005"/>
+  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.009"/>
+  <testcase name="equals_returnsTrueIfNamesAreTheSame" classname="CategoryTest" time="0.004"/>
   <testcase name="save_savesIntoDatabase_true" classname="CategoryTest" time="0.013"/>
   <testcase name="find_findsCategoryInDatabase_true" classname="CategoryTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>

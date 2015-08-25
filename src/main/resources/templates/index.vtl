@@ -6,7 +6,7 @@
 <form action="/categories" method="post">
   <label for="name">Category name</label>
   <input id="name" name="name" type="text">
-  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="submit" class="btn btn-success submit-name">Submit</button>
 </form>
 <!--drop down list of categories that you can add tasks to -->
 
@@ -33,10 +33,7 @@
   #if($categories)
     #foreach($category in $categories)
      <h3 class="clickable"><a href="/categories/$category.getId()">$category.getName()</a></h3>
-     <!-->this is for the jquery hidden div to maybe show tasks on a click
-     <div class=" specialhidden">
-       <span>$category.getName()</span>
-     </div> -->
+
     #end
   #else
   <p>

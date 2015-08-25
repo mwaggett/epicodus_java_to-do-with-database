@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AppTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2015-08-25T19:06:42" hostname="epicodus-107.local" time="0.48">
+<testsuite name="AppTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2015-08-25T23:16:54" hostname="epicodus-107.local" time="0.496">
   <properties/>
-  <testcase name="rootTest" classname="AppTest" time="0.317"/>
-  <testcase name="categoryIsDisplayedWhenCreated" classname="AppTest" time="0.09"/>
+  <testcase name="rootTest" classname="AppTest" time="0.336"/>
+  <testcase name="categoryIsDisplayedWhenCreated" classname="AppTest" time="0.092"/>
   <testcase name="categoryIsDeleted" classname="AppTest" time="0.011"/>
-  <testcase name="allTasksDisplayDescriptionOnCategoryPage" classname="AppTest" time="0.047"/>
+  <testcase name="allTasksDisplayDescriptionOnCategoryPage" classname="AppTest" time="0.043"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[[Thread-4] INFO spark.webserver.SparkServer - == Spark has ignited ...
 [Thread-4] INFO spark.webserver.SparkServer - >> Listening on 0.0.0.0:4567
 [Thread-4] INFO org.eclipse.jetty.server.Server - jetty-9.0.2.v20130417
-[Thread-4] INFO org.eclipse.jetty.server.ServerConnector - Started ServerConnector@495c5da7{HTTP/1.1}{0.0.0.0:4567}
+[Thread-4] INFO org.eclipse.jetty.server.ServerConnector - Started ServerConnector@661e9bf6{HTTP/1.1}{0.0.0.0:4567}
 [Test worker] INFO spark.webserver.SparkServer - >>> Spark shutting down ...
-[Test worker] INFO org.eclipse.jetty.server.Server - Graceful shutdown org.eclipse.jetty.server.Server@c93f088 by 
-[Test worker] INFO org.eclipse.jetty.server.ServerConnector - Stopped ServerConnector@495c5da7{HTTP/1.1}{0.0.0.0:4567}
+[Test worker] INFO org.eclipse.jetty.server.Server - Graceful shutdown org.eclipse.jetty.server.Server@2ae2895e by 
+[Test worker] INFO org.eclipse.jetty.server.ServerConnector - Stopped ServerConnector@661e9bf6{HTTP/1.1}{0.0.0.0:4567}
 [Test worker] INFO spark.webserver.SparkServer - done
 ]]></system-err>
 </testsuite>
