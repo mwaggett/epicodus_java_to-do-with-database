@@ -7,6 +7,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.junit.rules.ExternalResource;
 import org.sql2o.*;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AppTest extends FluentTest{
@@ -47,5 +48,14 @@ public class AppTest extends FluentTest{
     goTo(categoryPath);
     assertThat(pageSource()).contains("Steal money");
     assertThat(pageSource()).contains("Steal more money");
+  }
+
+  @Test
+  public void categoryIsDeleted() {
+    Category myCategory = new Category("meep");
+    myCategory.save();
+    String categoryPath = String.format("http://localhost:4567/categories/%d", myCategory.getId());
+    submit(".btn-danger");
+    assertThat(pageSource()).doesNotContain("meep");
   }
 }
