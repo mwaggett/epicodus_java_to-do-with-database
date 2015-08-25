@@ -20,7 +20,7 @@ public class TaskTest {
      }
 
      @Test
-     public void equals_returnsTrueIfDescriptionsAreTheSame() {
+     public void equals_returnsFalseIfDescriptionsAreTheSame() {
        Task firstTask = new Task("Mow the lawn", 2);
        Task secondTask = new Task("Mow the lawn", 1);
        assertTrue(!firstTask.equals(secondTask));
