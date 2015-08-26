@@ -2,18 +2,23 @@
 
 <ol>
 #foreach ($task in $category.getTasks())
-  <li>$task.getDescription()</li>
+  <li>$task.getDescription() id: $task.getId()</li>
+  <form action="/$category.getId()/tasks/$task.getId()/delete" method="post">
+    <button type="submit" class="btn btn-danger">DELETE</button>
+  </form>
+
+  <a href="/$category.getId()/tasks/$task.getId()/update">EDIT</a>
 #end
 </ol>
 
 
-<form action="/categories/$category.getId()/delete" method="post">
 
+<form action="/categories/$category.getId()/delete" method="post">
   <button type="submit" class="btn btn-danger">Delete this category</button>
 </form>
 
-<form action="/categories/$category.getId()/update">
 
+<form action="/categories/$category.getId()/update">
   <button type="submit" class="btn btn-info">Update this category</button>
 </form>
 
