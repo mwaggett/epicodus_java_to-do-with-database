@@ -11,6 +11,7 @@ public class App {
 
   get("/", (request, response) -> {
     HashMap<String, Object> model = new HashMap<String, Object>();
+    //categories here can be anything as long as it matches $categories
     model.put("categories", Category.all());
     model.put("template", "templates/index.vtl");
     return new ModelAndView(model, layout);
@@ -60,7 +61,8 @@ public class App {
   post("/tasks", (request, response) -> {
     HashMap<String,Object> model = new HashMap<String, Object>();
     //get categories
-    String name = request.queryParams("name");
+
+    //String name = request.queryParams("name");
   //**** instead of declaring category here, you could also just put it in model.put like above
     Category category = Category.find(Integer.parseInt(request.queryParams("categoryId")));
 
