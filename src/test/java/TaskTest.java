@@ -48,4 +48,26 @@ public class TaskTest {
         Task savedTask = Task.find(myTask.getId());
         assertTrue(myTask.equals(savedTask));
       }
+
+      @Test
+      public void delete_deletesTaskFromDatabase_true() {
+        Category myCategory = new Category("Banking");
+        myCategory.save();
+        Task myTask = new Task("Mow the lawn", 1);
+        myTask.save();
+        myTask.delete();
+        assertEquals(Task.all().size(), 0);
+      }
+
+      @Test
+      public void update_changesTaskNameInDatabase_true() {
+        Category myCategory = new Category("Morping");
+        myCategory.save();
+        Task myTask = new Task("Mow the lawn", 1);
+        myTask.save();
+        String description = "Fart";
+        myTask.update(description);
+        assertTrue(Task.all().get(0).getDescription().equals(description));
+
+      }
  }

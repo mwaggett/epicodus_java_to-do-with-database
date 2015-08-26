@@ -87,7 +87,7 @@ public class App {
     Category category = Category.find(Integer.parseInt(request.params(":id")));
     String name = request.queryParams("name");
     category.update(name);
-    response.redirect("/categories/:id");
+    response.redirect("/");
     return null;
   });
 

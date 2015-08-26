@@ -46,4 +46,22 @@ public class CategoryTest {
     Task[] tasks = new Task[] { firstTask, secondTask };
     assertTrue(myCategory.getTasks().containsAll(Arrays.asList(tasks)));
   }
+
+  @Test
+  public void delete_deletesCategoryFromDatabase_true() {
+    Category myCategory = new Category("Banking");
+    myCategory.save();
+    myCategory.delete();
+    assertEquals(Category.all().size(), 0);
+  }
+
+  @Test
+  public void update_changesCategoryNameInDatabase_true() {
+    Category myCategory = new Category("Morping");
+    myCategory.save();
+    String name = "Marble";
+    myCategory.update(name);
+    assertTrue(Category.all().get(0).getName().equals(name));
+
+  }
 }
