@@ -36,18 +36,6 @@ public class CategoryTest {
   }
 
   @Test
-  public void getTasks_retrievesAllTasksFromDatabase_tasksList() {
-    Category myCategory = new Category("Banking");
-    myCategory.save();
-    Task firstTask = new Task("steal money", myCategory.getId());
-    firstTask.save();
-    Task secondTask = new Task("lots of money", myCategory.getId());
-    secondTask.save();
-    Task[] tasks = new Task[] { firstTask, secondTask };
-    assertTrue(myCategory.getTasks().containsAll(Arrays.asList(tasks)));
-  }
-
-  @Test
   public void delete_deletesCategoryFromDatabase_true() {
     Category myCategory = new Category("Banking");
     myCategory.save();
