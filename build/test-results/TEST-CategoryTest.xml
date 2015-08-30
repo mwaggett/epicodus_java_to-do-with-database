@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CategoryTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2015-08-30T23:45:33" hostname="fisterra" time="0.201">
+<testsuite name="CategoryTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2015-08-30T23:55:29" hostname="fisterra" time="0.206">
   <properties/>
-  <testcase name="getTasks_returnsAllTasks_List" classname="CategoryTest" time="0.06"/>
-  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.013"/>
-  <testcase name="equals_returnsTrueIfNamesAreTheSame" classname="CategoryTest" time="0.007"/>
-  <testcase name="update_changesCategoryNameInDatabase_true" classname="CategoryTest" time="0.026"/>
-  <testcase name="save_savesIntoDatabase_true" classname="CategoryTest" time="0.018"/>
-  <testcase name="find_findsCategoryInDatabase_true" classname="CategoryTest" time="0.018"/>
+  <testcase name="getTasks_returnsAllTasks_List" classname="CategoryTest" time="0.064"/>
+  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.014"/>
+  <testcase name="equals_returnsTrueIfNamesAreTheSame" classname="CategoryTest" time="0.006"/>
+  <testcase name="update_changesCategoryNameInDatabase_true" classname="CategoryTest" time="0.027"/>
+  <testcase name="save_savesIntoDatabase_true" classname="CategoryTest" time="0.019"/>
+  <testcase name="find_findsCategoryInDatabase_true" classname="CategoryTest" time="0.019"/>
   <testcase name="delete_deletesCategoryFromDatabase_true" classname="CategoryTest" time="0.024"/>
   <testcase name="addTask_addsTaskToCategory_true" classname="CategoryTest" time="0.032"/>
   <system-out><![CDATA[]]></system-out>

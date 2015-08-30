@@ -1,6 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
+import java.util.List;
 
 public class TaskTest {
 
@@ -62,5 +63,31 @@ public class TaskTest {
         myTask.update(description);
         assertTrue(Task.all().get(0).getDescription().equals(description));
 
+      }
+
+      @Test
+      public void addCategory_addsCategoryToTask() {
+        Category myCategory = new Category("Household chores");
+        myCategory.save();
+
+        Task myTask = new Task("Break all the plates");
+        myTask.save();
+
+        myTask.addCategory(myCategory);
+        Category savedCategory = myTask.getCategories().get(0);
+        assertTrue(myCategory.equals(savedCategory));
+      }
+
+      @Test
+      public void getCategories_returnsAllCategories_ArrayList() {
+        Category myCategory = new Category("Household chores");
+        myCategory.save();
+
+        Task myTask = new Task("Banking");
+        myTask.save();
+
+        myTask.addCategory(myCategory);
+        List savedCategories = myTask.getCategories();
+        assertEquals(savedCategories.size(), 1);
       }
  }
