@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CategoryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-08-30T22:59:27" hostname="fisterra" time="0.116">
+<testsuite name="CategoryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-08-30T23:03:20" hostname="fisterra" time="0.141">
   <properties/>
-  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.014"/>
-  <testcase name="equals_returnsTrueIfNamesAreTheSame" classname="CategoryTest" time="0.007"/>
-  <testcase name="update_changesCategoryNameInDatabase_true" classname="CategoryTest" time="0.031"/>
+  <testcase name="all_emptyAtFirst" classname="CategoryTest" time="0.037"/>
+  <testcase name="equals_returnsTrueIfNamesAreTheSame" classname="CategoryTest" time="0.009"/>
+  <testcase name="update_changesCategoryNameInDatabase_true" classname="CategoryTest" time="0.028"/>
   <testcase name="save_savesIntoDatabase_true" classname="CategoryTest" time="0.019"/>
-  <testcase name="find_findsCategoryInDatabase_true" classname="CategoryTest" time="0.02"/>
-  <testcase name="delete_deletesCategoryFromDatabase_true" classname="CategoryTest" time="0.025"/>
+  <testcase name="find_findsCategoryInDatabase_true" classname="CategoryTest" time="0.022"/>
+  <testcase name="delete_deletesCategoryFromDatabase_true" classname="CategoryTest" time="0.024"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
