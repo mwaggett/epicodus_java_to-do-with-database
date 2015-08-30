@@ -21,8 +21,7 @@ public class Category {
   public boolean equals(Object otherCategory) {
     if(!(otherCategory instanceof Category )) {
       return false;
-    }
-    else {
+    } else {
       Category newCategory = (Category) otherCategory;
       return this.getName().equals(newCategory.getName());
     }
@@ -47,7 +46,7 @@ public class Category {
 
   public static Category find(int id ) {
     try(Connection con = DB.sql2o.open()) {
-      String sql ="select * from categories where id=:id";
+      String sql ="SELECT * FROM categories WHERE id=:id";
       Category category = con.createQuery(sql)
       .addParameter("id",id)
       .executeAndFetchFirst(Category.class);
@@ -55,15 +54,6 @@ public class Category {
     }
   }
 
-  public List<Task> getTasks() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM tasks where categoryId=:id";
-      return con.createQuery(sql)
-       .addParameter("id", this.id)
-       .executeAndFetch(Task.class);
-    }
-  }
-  //added stuff
 
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
@@ -81,6 +71,6 @@ public class Category {
           .addParameter("name", name)
           .addParameter("id", id)
           .executeUpdate();
-      }
     }
+  }
 }
