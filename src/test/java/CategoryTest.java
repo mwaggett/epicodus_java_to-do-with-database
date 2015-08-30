@@ -2,6 +2,7 @@ import java.util.Arrays;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
+import java.util.List;
 
 public class CategoryTest {
 
@@ -51,5 +52,30 @@ public class CategoryTest {
     myCategory.update(name);
     assertTrue(Category.all().get(0).getName().equals(name));
 
+  }
+
+  @Test
+  public void addTask_addsTaskToCategory_true() {
+    Category myCategory = new Category("Banking");
+    myCategory.save();
+    Task myTask = new Task("Steal money");
+    myTask.save();
+
+    myCategory.addTask(myTask);
+    Task savedTask = myCategory.getTasks().get(0);
+    assertTrue(myTask.equals(savedTask));
+  }
+
+  @Test
+  public void getTasks_returnsAllTasks_List() {
+    Category myCategory = new Category("Banking");
+    myCategory.save();
+
+    Task myTask = new Task("Steal money");
+    myTask.save();
+
+    myCategory.addTask(myTask);
+    List savedTasks = myCategory.getTasks();
+    assertEquals(savedTasks.size(), 1);
   }
 }
