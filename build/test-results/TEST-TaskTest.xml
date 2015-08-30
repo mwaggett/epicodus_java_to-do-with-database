@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TaskTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2015-08-26T20:29:16" hostname="epicodus-107.local" time="0.091">
+<testsuite name="TaskTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-08-30T22:59:27" hostname="fisterra" time="0.129">
   <properties/>
-  <testcase name="save_returnsTrueIfDescriptionsAretheSame" classname="TaskTest" time="0.012"/>
-  <testcase name="delete_deletesTaskFromDatabase_true" classname="TaskTest" time="0.02"/>
-  <testcase name="equals_returnsTrueIfDescriptionsAreTheSame" classname="TaskTest" time="0.004"/>
-  <testcase name="all_emptyAtFirst" classname="TaskTest" time="0.007"/>
-  <testcase name="equals_returnsFalseIfDescriptionsAreTheSame" classname="TaskTest" time="0.004"/>
-  <testcase name="update_changesCategoryNameInDatabase_true" classname="TaskTest" time="0.02"/>
-  <testcase name="save_assignsIdToObject" classname="TaskTest" time="0.011"/>
-  <testcase name="find_findsTaskInDatabase_true" classname="TaskTest" time="0.011"/>
+  <testcase name="update_changesTaskNameInDatabase_true" classname="TaskTest" time="0.032"/>
+  <testcase name="delete_deletesTaskFromDatabase_true" classname="TaskTest" time="0.031"/>
+  <testcase name="equals_returnsFalseIfDescriptionsAreDifferent" classname="TaskTest" time="0.007"/>
+  <testcase name="equals_returnsTrueIfDescriptionsAreTheSame" classname="TaskTest" time="0.007"/>
+  <testcase name="all_emptyAtFirst" classname="TaskTest" time="0.012"/>
+  <testcase name="save_assignsIdToObject" classname="TaskTest" time="0.018"/>
+  <testcase name="find_findsTaskInDatabase_true" classname="TaskTest" time="0.02"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

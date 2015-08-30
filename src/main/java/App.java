@@ -85,7 +85,6 @@ public class App {
  get("/tasks/:id/update", (request, response) -> {
    HashMap<String, Object> model = new HashMap<String, Object>();
    Task task = Task.find(Integer.parseInt(request.params(":id")));
-   model.put("category", category);
    model.put("task", task); //model.put("task", task) not needed for /delete, must add for /update
    model.put("template", "templates/edit_task.vtl");
    return new ModelAndView(model, layout);

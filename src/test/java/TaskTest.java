@@ -9,7 +9,7 @@ public class TaskTest {
 
      @Test
      public void all_emptyAtFirst() {
-       assertEquals(Task.all().size());
+       assertEquals(Task.all().size(), 0);
      }
 
      @Test
