@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TaskTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2015-08-30T23:55:29" hostname="fisterra" time="0.187">
+<testsuite name="TaskTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2015-08-31T00:11:11" hostname="fisterra" time="0.194">
   <properties/>
-  <testcase name="update_changesTaskNameInDatabase_true" classname="TaskTest" time="0.032"/>
-  <testcase name="delete_deletesTaskFromDatabase_true" classname="TaskTest" time="0.03"/>
+  <testcase name="update_changesTaskNameInDatabase_true" classname="TaskTest" time="0.031"/>
   <testcase name="addCategory_addsCategoryToTask" classname="TaskTest" time="0.031"/>
   <testcase name="equals_returnsFalseIfDescriptionsAreDifferent" classname="TaskTest" time="0.006"/>
   <testcase name="equals_returnsTrueIfDescriptionsAreTheSame" classname="TaskTest" time="0.006"/>
   <testcase name="all_emptyAtFirst" classname="TaskTest" time="0.011"/>
+  <testcase name="delete_deletesAllTasksAndListAssociations" classname="TaskTest" time="0.038"/>
   <testcase name="getCategories_returnsAllCategories_ArrayList" classname="TaskTest" time="0.032"/>
-  <testcase name="save_assignsIdToObject" classname="TaskTest" time="0.019"/>
+  <testcase name="save_assignsIdToObject" classname="TaskTest" time="0.02"/>
   <testcase name="find_findsTaskInDatabase_true" classname="TaskTest" time="0.018"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

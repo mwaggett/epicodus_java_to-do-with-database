@@ -3,6 +3,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
 import java.util.List;
+import java.util.ArrayList;
 
 public class CategoryTest {
 
@@ -34,14 +35,6 @@ public class CategoryTest {
     myCategory.save();
     Category savedCategory = Category.find(myCategory.getId());
     assertTrue(myCategory.equals(savedCategory));
-  }
-
-  @Test
-  public void delete_deletesCategoryFromDatabase_true() {
-    Category myCategory = new Category("Banking");
-    myCategory.save();
-    myCategory.delete();
-    assertEquals(Category.all().size(), 0);
   }
 
   @Test
@@ -77,5 +70,18 @@ public class CategoryTest {
     myCategory.addTask(myTask);
     List savedTasks = myCategory.getTasks();
     assertEquals(savedTasks.size(), 1);
+  }
+
+  @Test
+  public void delete_deletesCategoryAndListAssociations() {
+    Category myCategory = new Category("Banking");
+    myCategory.save();
+
+    Task myTask = new Task("Steal money");
+    myTask.save();
+
+    myCategory.addTask(myTask);
+    myCategory.delete();
+    assertEquals(myTask.getCategories().size(), 0);
   }
 }

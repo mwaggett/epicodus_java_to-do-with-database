@@ -55,16 +55,6 @@ public class Category {
     }
   }
 
-
-  public void delete() {
-    try(Connection con = DB.sql2o.open()) {
-    String sql = "DELETE FROM categories WHERE id = :id;";
-      con.createQuery(sql)
-        .addParameter("id", id)
-        .executeUpdate();
-    }
-  }
-
   public void update(String name) {
       try(Connection con = DB.sql2o.open()) {
         String sql = "UPDATE categories SET name= :name WHERE id= :id";
@@ -102,6 +92,20 @@ public class Category {
         tasks.add(task);
       }
       return tasks;
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM categories WHERE id = :id";
+        con.createQuery(deleteQuery)
+          .addParameter("id", id)
+          .executeUpdate();
+
+      String joinDeleteQuery = "DELETE FROM categories_tasks WHERE category_id = :categoryId";
+        con.createQuery(joinDeleteQuery)
+          .addParameter("categoryId", this.getId())
+          .executeUpdate();
     }
   }
 }
