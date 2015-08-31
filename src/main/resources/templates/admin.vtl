@@ -29,6 +29,14 @@
             <label for="description">Task Description</label>
             <input id="description" name="description" type="text">
 
+            <label>Add Categories to This Task</label>
+            <br>
+            #foreach ($category in $categories)
+              <input name="category$category.getId()" type="checkbox" value="$category.getId()">
+                $category.getName()
+              <br>
+            #end
+
             <button type="submit" class="btn btn-success new-task">Submit</button>
           </div>
         </form>

@@ -53,10 +53,17 @@ import java.util.Set;
     });
 
     post("/add-task", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
 
       Task newTask = new Task(request.queryParams("description"));
       newTask.save();
+
+      Object[] params = request.queryParams().toArray();
+
+      for (int i = 1; i < params.length; i++) {
+        String selectedCategory = (String) request.queryParams((String) params[i]);
+        Category category = Category.find(Integer.parseInt(selectedCategory));
+        newTask.addCategory(category);
+      }
 
       response.redirect("/admin");
       return null;
