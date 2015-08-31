@@ -16,6 +16,7 @@ import java.util.Set;
 
       List<Task> tasks = Task.all();
       List<Category> categories = Category.all();
+      
       model.put("tasks", tasks);
       model.put("categories", categories);
       model.put("template", "templates/index.vtl");
@@ -129,6 +130,16 @@ import java.util.Set;
 
       Task toBeDeleted = Task.find(Integer.parseInt(request.params(":id")));
       toBeDeleted.delete();
+
+      response.redirect("/");
+      return null;
+    });
+
+    post("/tasks/:id/complete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Task toBeDeleted = Task.find(Integer.parseInt(request.params(":id")));
+      toBeDeleted.completeTask();
 
       response.redirect("/");
       return null;

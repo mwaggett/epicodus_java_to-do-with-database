@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Task {
   private int id;
   private String description;
+  private boolean complete;
 
   public int getId() {
     return id;
@@ -14,8 +15,13 @@ public class Task {
     return description;
   }
 
+  public boolean isComplete() {
+    return complete;
+  }
+
   public Task(String description) {
     this.description = description;
+    this.complete = false;
   }
 
   @Override
@@ -25,12 +31,13 @@ public class Task {
     } else {
       Task newTask = (Task) otherTask;
       return this.getDescription().equals(newTask.getDescription()) &&
+             this.isComplete() == newTask.isComplete() &&
              this.getId() == newTask.getId();
     }
   }
 
   public static List<Task> all() {
-  String sql = "SELECT id, description FROM tasks ORDER BY description ASC";
+  String sql = "SELECT * FROM tasks ORDER BY description ASC";
   try(Connection con = DB.sql2o.open()) {
     return con.createQuery(sql).executeAndFetch(Task.class);
   }
@@ -38,9 +45,10 @@ public class Task {
 
   public void save() {
   try(Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO tasks (description) VALUES (:description)";
+    String sql = "INSERT INTO tasks (description, complete) VALUES (:description, :complete)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("description", this.description)
+      .addParameter("complete", this.complete)
       .executeUpdate()
       .getKey();
    }
@@ -70,6 +78,7 @@ public class Task {
  }
 
  public void update(String description) {
+   this.description = description;
      try(Connection con = DB.sql2o.open()) {
        String sql = "UPDATE tasks SET description = :description WHERE id = :id";
        con.createQuery(sql)
@@ -108,4 +117,16 @@ public class Task {
       return categories;
    }
  }
+
+ public void completeTask() {
+   this.complete = true;
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "UPDATE tasks SET complete = true WHERE id = :id";
+     con.createQuery(sql)
+       //.addParameter("complete", true)
+       .addParameter("id", id)
+       .executeUpdate();
+   }
+ }
+
 }

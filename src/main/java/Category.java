@@ -89,11 +89,45 @@ public class Category {
         Task task = con.createQuery(taskQuery)
           .addParameter("taskId", taskId)
           .executeAndFetchFirst(Task.class);
-        tasks.add(task);
+        if (!task.isComplete()) {
+          tasks.add(task);
+        }
       }
       return tasks;
     }
   }
+
+  public ArrayList<Task> getCompletedTasks() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT task_id FROM categories_tasks WHERE category_id = :category_id";
+      List<Integer> taskIds = con.createQuery(sql)
+      .addParameter("category_id", this.getId())
+      .executeAndFetch(Integer.class);
+
+      ArrayList<Task> tasks = new ArrayList<Task>();
+
+      for (Integer taskId : taskIds) {
+        String taskQuery = "SELECT * FROM tasks WHERE id = :taskId";
+        Task task = con.createQuery(taskQuery)
+          .addParameter("taskId", taskId)
+          .executeAndFetchFirst(Task.class);
+        if (task.isComplete()) {
+          tasks.add(task);
+        }
+      }
+      return tasks;
+    }
+  }
+
+  // public List<Task> getCompletedTasks() {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String sql = "SELECT tasks.*, categories_tasks.category_id FROM categories JOIN categories_tasks ON categories_tasks.category_id = categories.id JOIN tasks ON categories_tasks.task_id = tasks.id WHERE complete = true AND category_id = :category_id;";
+  //     List<Task> completedTasks = con.createQuery(sql)
+  //         .addParameter("category_id", id)
+  //         .executeAndFetch(Task.class);
+  //     return completedTasks;
+  //   }
+  // }
 
   public void delete() {
     try(Connection con = DB.sql2o.open()) {

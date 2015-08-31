@@ -9,3 +9,7 @@
 span {
   color:red;
 }
+
+.inline {
+  display: inline-block;
+}

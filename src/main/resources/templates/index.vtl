@@ -6,22 +6,46 @@
 
     #foreach($category in $categories)
       <div class="well">
-        <h3>$category.getName()</h3>
-        <ol>
-        #foreach ($task in $category.getTasks())
-          <li><a href="/tasks/$task.getId()/edit">$task.getDescription()</a></li>
-        #end
-        </ol>
-        <div class="pull-left">
-          <form action="/categories/$category.getId()/update" method="get">
-            <button type="submit" class="btn btn-warning">Update</button>
-          </form>
-        </div>
+        <div class="row">
+         <div class="pull-left">
+          <h3>$category.getName()</h3>
+            <ul style="list-style-type:none">
+            #foreach ($task in $category.getTasks())
+              <li>
+                <form class="inline" action="tasks/$task.getId()/complete" method="post">
+                  <input type="image" class="btTxt submit" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABlklEQVRoQ+2ZQVLCQBBFf0uJm6SKnSxzA+IJxBPoDYxbsvIkrpKtcAM8gXoCkxvMEndUJRuxsK3RIoVIIAkT0FTPNjM987tfJ5X5hIYMaogOiJC/VkmpyL+siBOm1wBfAejsWcAUoLEaWKNt+25Ey7njDtrpIxHcbYHqfM6MCDPrQt3SNG+fzUKC5OXQIhYH12KUb5+VFuIEqUfE93VmumxsZrpRvjVcty63Ik6QjIlwWXazOucz40H5tu7VXyNfSJg8EXC+vMLtttA7bdV51ix2/DpHNJn/2IuBZzWw+zsL8dxjeL32XoQM4xmG0bsIyTLgrEFLKlIBRkFrNWmCVgWM1i0RtAQtQyithhG0BC1Ba3MGpEekR6RHpEfkVzdjQP4QK7wQ5Dsi35EK2BRZImgVQUtfmbrdoyIJ3XlONPkwdGXamEvsptgKmg0nTCICejtzYiAAA7Ea2LnO2Xbr7STV9sJBxWgReLP6la23RSK1e/VlhtKezVDGtxma41ItF1p8dgPYGw0hFTGaTgPBpCIGkmg0xCdwUp1CRL6bhQAAAABJRU5ErkJggg=="
+                      width="15" height="15">
+                </form>
+                <a class="inline" href="/tasks/$task.getId()/edit">$task.getDescription()</a>
+              </li>
+            #end
+            </ul>
+          </div>
 
         <div class="pull-right">
-          <form action="/categories/$category.getId()/delete" method="post">
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
+          <h3>Completed Tasks</h3>
+            <ul style="list-style-type:none">
+            #foreach ($task in $category.getCompletedTasks())
+              <li>
+                <del>$task.getDescription()</del>
+              </li>
+            #end
+            </ul>
+        </div>
+      </div>
+
+        <div class="row">
+          <div class="pull-left">
+            <form action="/categories/$category.getId()/update" method="get">
+              <button type="submit" class="btn btn-warning">Update</button>
+            </form>
+          </div>
+
+          <div class="pull-right">
+            <form action="/categories/$category.getId()/delete" method="post">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
         </div>
 
       </div>
