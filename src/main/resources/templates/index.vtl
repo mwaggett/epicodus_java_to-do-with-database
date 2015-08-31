@@ -2,29 +2,34 @@
   <h2 class="well"><center>To Do List</center></h2>
   <h3><a href="/admin">Add categories and tasks</a></h3>
 
-  #if($categories)
+  #if($categories.size() > 0)
 
-      #foreach($category in $categories)
+    #foreach($category in $categories)
       <div class="well">
-      <h3>$category.getName()</h3>
-      <ol>
+        <h3>$category.getName()</h3>
+        <ol>
         #foreach ($task in $category.getTasks())
           <li>$task.getDescription()</li>
         #end
-      </ol>
-      <div class="pull-left">
-      <h5 class="clickable"><a href="/update">Update</a></h5>
-      </div>
+        </ol>
+        <div class="pull-left">
+          <form action="/categories/$category.getId()/update" method="get">
+            <button type="submit" class="btn btn-warning">Update</button>
+          </form>
+        </div>
 
-      <div class="pull-right">
-      <h5 class="clickable"><a href="/delete">Delete</a></h5>
-      </div>
+        <div class="pull-right">
+          <form action="/categories/$category.getId()/delete" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
 
-    </div>
-      #end
+      </div>
+    #end
 
   #else
-  <div class="well">
-    <h2>Congratulations! You have nothing to do.</h2>
+    <div class="well">
+      <h2>Congratulations! You have nothing to do.</h2>
+    </div>
   #end
 </div>

@@ -42,10 +42,13 @@ import java.util.Set;
 
       Object[] params = request.queryParams().toArray();
 
-      for (int i = 1; i < params.length; i++) {
-        String selectedTask = (String) request.queryParams((String) params[i]);
-        Task task = Task.find(Integer.parseInt(selectedTask));
-        newCategory.addTask(task);
+      for (Object param : params) {
+        if (param.equals("name")) {
+        } else {
+          String selectedTask = (String) request.queryParams((String) param);
+          Task task = Task.find(Integer.parseInt(selectedTask));
+          newCategory.addTask(task);
+        }
       }
 
       response.redirect("/admin");
@@ -59,13 +62,45 @@ import java.util.Set;
 
       Object[] params = request.queryParams().toArray();
 
-      for (int i = 1; i < params.length; i++) {
-        String selectedCategory = (String) request.queryParams((String) params[i]);
-        Category category = Category.find(Integer.parseInt(selectedCategory));
-        newTask.addCategory(category);
+      for (Object param : params) {
+        if (param.equals("description")) {
+        } else {
+          String selectedCategory = (String) request.queryParams((String) param);
+          Category category = Category.find(Integer.parseInt(selectedCategory));
+          newTask.addCategory(category);
+        }
       }
-
       response.redirect("/admin");
+      return null;
+    });
+
+    get("/categories/:id/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Category category = Category.find(Integer.parseInt(request.params(":id")));
+
+      model.put("category", category);
+      model.put("template", "templates/category-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/categories/:id/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Category toBeUpdated = Category.find(Integer.parseInt(request.params(":id")));
+      toBeUpdated.update(request.queryParams("name"));
+
+      response.redirect("/");
+      return null;
+    });
+
+    post("/categories/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Category toBeDeleted = Category.find(Integer.parseInt(request.params(":id")));
+      toBeDeleted.delete();
+
+      response.redirect("/");
       return null;
     });
 
