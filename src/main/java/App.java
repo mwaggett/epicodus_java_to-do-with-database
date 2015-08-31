@@ -104,8 +104,35 @@ import java.util.Set;
       return null;
     });
 
+    get("/tasks/:id/edit", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
 
+      Task task = Task.find(Integer.parseInt(request.params(":id")));
 
+      model.put("task", task);
+      model.put("template", "templates/task-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/tasks/:id/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Task toBeUpdated = Task.find(Integer.parseInt(request.params(":id")));
+      toBeUpdated.update(request.queryParams("description"));
+
+      response.redirect("/");
+      return null;
+    });
+
+    post("/tasks/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      Task toBeDeleted = Task.find(Integer.parseInt(request.params(":id")));
+      toBeDeleted.delete();
+
+      response.redirect("/");
+      return null;
+    });
 
   }//end of main
 

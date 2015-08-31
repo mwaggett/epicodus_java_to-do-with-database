@@ -1,13 +1,14 @@
-<!--Edits tasks-->
+<h3>Update $task.getDescription()</h3>
 
-<!--<h3>Update $task.getDescription()</h3>
-
-<form action="/$category.getId()/tasks/$task.getId()/update" method="post">
+<form action="/tasks/$task.getId()/update" method="post">
 
   <div class="form-group">
     <label for="description">Update task</label>
     <input id="description" name="description" type="text" class="form-control">
+    <button type="submit" class="btn btn-warning">Update</button>
   </div>
+</form>
 
-  <button type="submit" class="btn btn-success">Submit</button>
-</form> -->
+<form action="/tasks/$task.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>

@@ -9,7 +9,7 @@
         <h3>$category.getName()</h3>
         <ol>
         #foreach ($task in $category.getTasks())
-          <li>$task.getDescription()</li>
+          <li><a href="/tasks/$task.getId()/edit">$task.getDescription()</a></li>
         #end
         </ol>
         <div class="pull-left">
