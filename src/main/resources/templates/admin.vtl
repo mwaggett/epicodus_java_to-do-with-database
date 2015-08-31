@@ -11,9 +11,11 @@
             <label>Add Tasks to This Category</label>
             <br>
             #foreach ($task in $tasks)
-              <input name="task$task.getId()" type="checkbox" value="$task.getId()">
-                $task.getDescription()
-              <br>
+              #if(!$task.isComplete())
+                <input name="task$task.getId()" type="checkbox" value="$task.getId()">
+                  $task.getDescription()
+                <br>
+              #end
             #end
             <button type="submit" class="btn btn-success new-category">Submit</button>
           </div>
