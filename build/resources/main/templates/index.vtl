@@ -1,42 +1,30 @@
-<h1>To Do List</h1>
-
-<p>
-  Add a category:
-</p>
-<form action="/categories" method="post">
-  <label for="name">Category name</label>
-  <input id="name" name="name" type="text">
-  <button type="submit" class="btn btn-success submit-name">Submit</button>
-</form>
-<!--drop down list of categories that you can add tasks to -->
-
-<form action="/tasks" method="post">
-
-  <div class="form-group">
-    <label for="categoryId">Select a List</label>
-    <select id="categoryId" name="categoryId" type="text">
-    #foreach($category in $categories)
-      <option value="$category.getId()">$category.getName()</option>
-    #end
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="description">Add a task</label>
-    <input id="description" name="description" type="text" class="form-control">
-  </div>
-
-  <button type="submit" class="btn btn-success">Submit</button>
-</form>
-
+<div class="row">
+  <h2 class="well"><center>To Do List</center></h2>
+  <h3><a href="/admin">Add categories and tasks</a></h3>
 
   #if($categories)
-    #foreach($category in $categories)
-     <h3 class="clickable"><a href="/categories/$category.getId()">$category.getName()</a></h3>
 
-    #end
+      #foreach($category in $categories)
+      <div class="well">
+      <h3>$category.getName()</h3>
+      <ol>
+        #foreach ($task in $category.getTasks())
+          <li>$task.getDescription()</li>
+        #end
+      </ol>
+      <div class="pull-left">
+      <h5 class="clickable"><a href="/update">Update</a></h5>
+      </div>
+
+      <div class="pull-right">
+      <h5 class="clickable"><a href="/delete">Delete</a></h5>
+      </div>
+      
+    </div>
+      #end
+
   #else
-  <p>
-    There are no categories, yet!
-  </p>
+  <div class="well">
+    <h2>Congratulations! You have nothing to do.</h2>
   #end
+</div>

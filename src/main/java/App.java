@@ -11,6 +11,11 @@ import java.util.List;
 
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+
+      List<Task> tasks = Task.all();
+      List<Category> categories = Category.all();
+      model.put("tasks", tasks);
+      model.put("categories", categories);
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
